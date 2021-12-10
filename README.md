@@ -11,9 +11,11 @@ This project was developed using Katalon Studio v8.2.0 on Mac, but would work on
 
 ## Problem to solve
 
-In Katalon Studio, I have a Test Case which requires some parameters runtime. And I have a CSV file of which lines contain the values to pass to the Test Case. The number of lines is massive: 50,000.
+In Katalon Studio, I have a Test Case which requires some parameters runtime. And I have a CSV file of which lines contain the values to pass to the Test Case.
 
-If I run the Test Case for 50,000 times sequentially, who knows how long would take? How many days and nights? So, I want to somehow split the data into smaller chunks of N groups, and execute N tests in parallel in order to let the tasks finish faster. N could be 2, 5, 10, 50, …​
+Let me assume a serious case: the number of lines is massive: 50,000. If I run the Test Case for 50,000 times sequentially, who knows how long would take? How many days and nights?
+
+So, I want to somehow split the data into smaller chunks of N groups, and execute N tests in parallel in order to let the tasks finish faster. N could be 2, 5, 10, 50, …​
 
 I want the codes in the Katalon Studio project as simple and maintainable as possible.
 
