@@ -148,6 +148,8 @@ If `start=10` and `end=13` are given, then the controller will call the the work
 </tbody>
 </table>
 
+`TC_controller` is a sort of **filter** that accepts 50000 lines of data and apply some custom logic to decide which lines to take and which lines to filter out. You can develop any other sophisticated **logic**.
+
 ### Execution profiles
 
 -   How can I specify the value of `GlobalVariable.start` and `GlobalVariable.end`?
@@ -191,3 +193,51 @@ As [document](https://docs.katalon.com/katalon-studio/docs/console-mode-executio
 With KRE, you have a lot more flexibility to control the way how to split the data. You can dynamically generate the command line by any scripting technology you like (bash, python, etc)
 
 If you deploy your test as distributed on AWS, as long as your budget allows, you can run 100 instances in parallel so that your test may finish far faster than a single laptop.
+
+## Filter data and Go
+
+50000 lines of data --- it is too much to apply to a UI tests as one go. I want to dynamically extract some portion of data lines to for a smaller subset; 10 lines, 50, .. 100 at most. How can I do it?
+
+I wrote `Test Cases/TC_controller_filtering_data.tc`.
+
+    import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+
+    import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+
+    import internal.GlobalVariable
+
+    String pattern = GlobalVariable.DataStartsWithPattern
+
+    println "pattern=${pattern}"
+
+    File data = new File("./data.csv")
+    int count = 0
+    data.eachLine { line, lineNumber ->
+        List<String> items = line.split(" ") as List
+        if (items[1].toUpperCase().startsWith(pattern.toUpperCase())) {
+            WebUI.callTestCase(findTestCase("TC_worker"), ["seq": items[0], "data": items[1]])
+            count += 1
+        }
+        
+    }
+
+    println "count=${count}"
+
+When I set `GlobalVariable.DataStartsWithPattern='FF1'` and run this test case, I saw in the console
+
+    pattern=FF1
+    2040 has data FF11DA
+    4227 has data FF155D
+    5264 has data FF1563
+    7344 has data FF15AF
+    7664 has data FF1908
+    11135 has data FF1504
+    28194 has data FF1250
+    29614 has data FF1A82
+    42775 has data FF1083
+    48683 has data FF1AFD
+    count=10
+
+`TC_controller_filtering_data` extracted 10 lines out of 50000, and called `TC_worker` just 10 times.
+
+The point is that you can design and implement the rule how to filter the smaller chuck out of the mass.

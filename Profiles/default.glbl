@@ -14,4 +14,9 @@
       <initValue>3</initValue>
       <name>end</name>
    </GlobalVariableEntity>
+   <GlobalVariableEntity>
+      <description></description>
+      <initValue>'FF1'</initValue>
+      <name>DataStartsWithPattern</name>
+   </GlobalVariableEntity>
 </GlobalVariableEntities>
