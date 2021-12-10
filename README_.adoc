@@ -150,7 +150,7 @@ If you deploy your test as distributed on AWS, as long as your budget allows, yo
 
 == Filter data and Go
 
-50000 lines of data --- it is too much to apply to a UI tests as one go. I want to dynamically extract some portion of data lines to form a smaller subset; 10 lines, 50, .. 100 at most. How can I do it?
+50000 lines of data --- it is too much to apply to a UI tests as one go. I want to dynamically extract some smaller portion of data lines; 10 lines, 50, .. 100 at most. How can I do it?
 
 I wrote `Test Cases/TC_controller_filtering_data.tc`.
 

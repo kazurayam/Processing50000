@@ -196,18 +196,15 @@ If you deploy your test as distributed on AWS, as long as your budget allows, yo
 
 ## Filter data and Go
 
-50000 lines of data --- it is too much to apply to a UI tests as one go. I want to dynamically extract some portion of data lines to for a smaller subset; 10 lines, 50, .. 100 at most. How can I do it?
+50000 lines of data --- it is too much to apply to a UI tests as one go. I want to dynamically extract some portion of data lines to form a smaller subset; 10 lines, 50, .. 100 at most. How can I do it?
 
 I wrote `Test Cases/TC_controller_filtering_data.tc`.
 
     import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
-
     import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
-
     import internal.GlobalVariable
 
     String pattern = GlobalVariable.DataStartsWithPattern
-
     println "pattern=${pattern}"
 
     File data = new File("./data.csv")
@@ -217,10 +214,8 @@ I wrote `Test Cases/TC_controller_filtering_data.tc`.
         if (items[1].toUpperCase().startsWith(pattern.toUpperCase())) {
             WebUI.callTestCase(findTestCase("TC_worker"), ["seq": items[0], "data": items[1]])
             count += 1
-        }
-        
+        }   
     }
-
     println "count=${count}"
 
 When I set `GlobalVariable.DataStartsWithPattern='FF1'` and run this test case, I saw in the console
@@ -240,4 +235,4 @@ When I set `GlobalVariable.DataStartsWithPattern='FF1'` and run this test case, 
 
 `TC_controller_filtering_data` extracted 10 lines out of 50000, and called `TC_worker` just 10 times.
 
-The point is that you can design and implement the rule how to filter the smaller chuck out of the mass.
+The point is that I do not use Katalon’s Data-driven testing feature. I do data-binding for myself; I can design and implement the rule how to filter the smaller chuck out of the mass.
