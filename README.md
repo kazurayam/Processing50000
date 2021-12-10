@@ -13,21 +13,21 @@ This project was developed using Katalon Studio v8.2.0 on Mac, but would work on
 
 In Katalon Studio, I have a Test Case which requires some parameters runtime. And I have a CSV file of which lines contain the values to pass to the Test Case.
 
-Let me assume a serious case: the number of lines is massive: 50,000. If I run the Test Case for 50,000 times sequentially, who knows how long would take? How many days and nights?
+Let me assume an extreme case: the number of lines is massive: 50,000. If I run the Test Case for 50,000 times sequentially, who knows how long would it take? How many days and nights?
 
-So, I want to somehow split the data into smaller chunks of N groups, and execute N tests in parallel in order to let the tasks finish faster. N could be 2, 5, 10, 50, …​
+So, I want to somehow split the data into smaller chunks of N groups, and execute N tests in parallel in order to let the tasks to finish faster. N could be 2, 5, 10, 50, …​
 
 I want the codes in the Katalon Studio project as simple and maintainable as possible.
 
 I would start developing the project using Katalon Studio GUI on a laptop machine.
 
-I would imagine distributing the whole task into multiple machines on Cloud with sufficient Katalon Runtime Engine licenses (50 AWS EC2 instances?) as much as the budget allows. With this hope in mind, I want to design the project’s code to run fine in such distributed environment.
+I would imagine distributing the whole task on multiple instances on Cloud with sufficient Katalon Runtime Engine licenses (50 AWS EC2 instances?) as much as the budget allows. With this hope in mind, I want to design the project’s code to run fine in such distributed environment as well as on a laptop.
 
 ## Solution
 
 I would not use Katalon’s [Data-driven Testing](https://docs.katalon.com/katalon-studio/docs/ddt.html) feature, because I want to control the data-variable binding myself.
 
-I will build a state-of-the-art combination of Test Cases, Global Variables, Test Suites, and Test Suite Collections.
+I will build a state-of-the-art combination of Test Cases, Execution Profiles, Global Variables, Test Suites, and Test Suite Collections.
 
 ## Scenario
 
@@ -54,7 +54,7 @@ The input CSV file contains 50000 lines with some valuable data.
 
 ### Test Case
 
-The following is the "actual test case". I wrote it intensionally simple to make it easy to understand. You can whatever tests using any `WebUI.xxxxx` keywords as you like here.
+The following is the "actual test case". I wrote it intensionally simple to make it easy to understand. You can implement whatever tests using `WebUI.xxxxx` keywords as you like here.
 
 This test case expects 2 variables `seq` and `data` are supplied by the caller.
 
@@ -86,7 +86,7 @@ And when lines (49801..49803) is applied, I want to see this:
 
 ### Controller Test Case
 
-I made a Test Case `TC_controller` which reads the `data.csv` file in, determines which lines to process, calles `TC_worker` which passing parameters from the file into the worker.
+I made a Test Case `TC_controller` which reads the `data.csv` file in, determines which lines to process, calles `TC_worker` while passing parameters from the file into the worker.
 
     import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
     import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
@@ -107,12 +107,11 @@ I made a Test Case `TC_controller` which reads the `data.csv` file in, determine
 
 Please note that `TC_controller` requires runtime parameter `start` and `end`. And it reads the value from `GlobalVariable.start` and `GlobalVariable.end`.
 
-Can you guess what `start` and `end` are? Easy to guess. These runtime parameters decides which portion of lines out of the data.csv file to be processed by this time of Controller execution.
+Can you guess what `start` and `end` are? `start` and `end` decides which portion of lines in the `data.csv` file to be processed by this time of Controller execution.
 
-If `start=10` and `end=13` are given, then the controller will call the the worker 4 times while passing the parameter of
+If `start=10` and `end=13` are given, then the controller will call the the worker 4 times while passing the parameters like this:
 
 <table>
-<caption>the variables passed to the worker when start=10,end=13</caption>
 <colgroup>
 <col style="width: 33%" />
 <col style="width: 33%" />
@@ -148,8 +147,6 @@ If `start=10` and `end=13` are given, then the controller will call the the work
 </tr>
 </tbody>
 </table>
-
-the variables passed to the worker when start=10,end=13
 
 ### Execution profiles
 
