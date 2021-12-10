@@ -1,0 +1,3 @@
+= Processing 50000 times of UI test in Katalon Studio
+
+This is a small Katalon Studio project for demonstration purpose. You can download the zip from 
