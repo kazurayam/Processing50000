@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_controller</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>cfb31013-041f-496f-8de5-c0bf86c060b6</testCaseGuid>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>eb9223b6-ce28-4ea2-9c19-5775ba066400</id>
+      <masked>false</masked>
+      <name>start</name>
+   </variable>
+   <variable>
+      <defaultValue>3</defaultValue>
+      <description></description>
+      <id>dd2fadd8-f293-4476-827b-afdb7cbdbe06</id>
+      <masked>false</masked>
+      <name>end</name>
+   </variable>
+</TestCaseEntity>

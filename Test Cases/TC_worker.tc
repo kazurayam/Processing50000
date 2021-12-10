@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>TC_worker</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>17aaff18-880c-4984-9e55-b53a2c6f90c5</testCaseGuid>
+   <variable>
+      <defaultValue>0</defaultValue>
+      <description></description>
+      <id>51041934-ed86-405a-82ac-b0feeda435e4</id>
+      <masked>false</masked>
+      <name>seq</name>
+   </variable>
+   <variable>
+      <defaultValue>'foo'</defaultValue>
+      <description></description>
+      <id>21ea4b24-1560-4176-8ad7-0709144519ea</id>
+      <masked>false</masked>
+      <name>data</name>
+   </variable>
+</TestCaseEntity>
