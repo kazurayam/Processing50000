@@ -1,0 +1,18 @@
+@startuml
+actor       Author       as author
+database    README_.adoc as adoc
+participant asciidoctor  as adoctor
+database    README_.xml  as docbook
+participant pandoc       as pandoc
+database    README.md    as md
+queue       GitHub       as gh
+actor       Visitor      as visitor
+author  -> adoc     : author it
+adoc    -> adoctor  : read it
+adoctor -> docbook  : convert it
+docbook -> pandoc   : read it
+pandoc  -> md       : generate it
+md      -> gh       : push it
+gh      -> visitor  : read it
+@enduml
+
