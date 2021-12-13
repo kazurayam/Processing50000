@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestCaseEntity>
+   <description></description>
+   <name>crossbeam_worker</name>
+   <tag></tag>
+   <comment></comment>
+   <testCaseGuid>5e3f3016-3bdd-44dc-8655-db334c40dc0d</testCaseGuid>
+   <variable>
+      <defaultValue>'TS'</defaultValue>
+      <description></description>
+      <id>7b414bf7-11be-4d2e-abb4-f26462aca174</id>
+      <masked>false</masked>
+      <name>testSuiteName</name>
+   </variable>
+   <variable>
+      <defaultValue>'e1aeb8ab-1700-472b-8f50-21c26cdd1ac3'</defaultValue>
+      <description></description>
+      <id>9a930709-a8e0-4c37-b286-f8abfb0cb8d7</id>
+      <masked>false</masked>
+      <name>testSuiteGuid</name>
+   </variable>
+   <variable>
+      <defaultValue>1</defaultValue>
+      <description></description>
+      <id>3116a7e1-5127-4500-8620-d428d34d0950</id>
+      <masked>false</masked>
+      <name>rangeFrom</name>
+   </variable>
+   <variable>
+      <defaultValue>'99'</defaultValue>
+      <description></description>
+      <id>c7d571aa-8bbe-4d73-9bad-ab46309e171c</id>
+      <masked>false</masked>
+      <name>rangeTo</name>
+   </variable>
+   <variable>
+      <defaultValue>'out/crossbeam'</defaultValue>
+      <description></description>
+      <id>805b7592-b95a-48d0-9d22-951b04a59b82</id>
+      <masked>false</masked>
+      <name>outputDirRelativePath</name>
+   </variable>
+</TestCaseEntity>

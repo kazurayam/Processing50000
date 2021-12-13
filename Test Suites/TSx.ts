@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TestSuiteEntity>
+   <description></description>
+   <name>TSx</name>
+   <tag></tag>
+   <isRerun>false</isRerun>
+   <mailRecipient></mailRecipient>
+   <numberOfRerun>0</numberOfRerun>
+   <pageLoadTimeout>30</pageLoadTimeout>
+   <pageLoadTimeoutDefault>true</pageLoadTimeoutDefault>
+   <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
+   <rerunImmediately>false</rerunImmediately>
+   <testSuiteGuid>e1aeb8ab-1700-472b-8f50-21c26cdd1ac3</testSuiteGuid>
+   <testCaseLink>
+      <guid>47e119a2-d5a4-43f4-9af7-546bb9d9d342</guid>
+      <isReuseDriver>false</isReuseDriver>
+      <isRun>true</isRun>
+      <testCaseId>Test Cases/TC_worker</testCaseId>
+      <testDataLink>
+         <combinationType>ONE</combinationType>
+         <id>1b00898a-f363-4967-8c5e-101d216ae179</id>
+         <iterationEntity>
+            <iterationType>ALL</iterationType>
+            <value></value>
+         </iterationEntity>
+         <testDataId>Data Files/data</testDataId>
+      </testDataLink>
+      <variableLink>
+         <testDataLinkId>1b00898a-f363-4967-8c5e-101d216ae179</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>seq</value>
+         <variableId>51041934-ed86-405a-82ac-b0feeda435e4</variableId>
+      </variableLink>
+      <variableLink>
+         <testDataLinkId>1b00898a-f363-4967-8c5e-101d216ae179</testDataLinkId>
+         <type>DATA_COLUMN</type>
+         <value>data</value>
+         <variableId>21ea4b24-1560-4176-8ad7-0709144519ea</variableId>
+      </variableLink>
+   </testCaseLink>
+</TestSuiteEntity>

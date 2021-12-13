@@ -6,6 +6,7 @@
    <UUID>e89bc1bd-b7f3-42f6-a5fb-d721600e4367</UUID>
    <migratedVersion>5.9.0</migratedVersion>
    <pageLoadTimeout>0</pageLoadTimeout>
+   <projectFileLocation>/Users/kazuakiurayama/katalon-workspace/Processing50000/Processing50000.prj</projectFileLocation>
    <sourceContent>
       <sourceFolderList>
          <sourceFolderConfiguration>

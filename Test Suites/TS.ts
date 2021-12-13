@@ -11,22 +11,4 @@
    <rerunFailedTestCasesOnly>false</rerunFailedTestCasesOnly>
    <rerunImmediately>false</rerunImmediately>
    <testSuiteGuid>8f98461c-91ee-47e7-be21-377c64f4c706</testSuiteGuid>
-   <testCaseLink>
-      <guid>09d93ea6-82c7-4917-8046-26e92df0c061</guid>
-      <isReuseDriver>false</isReuseDriver>
-      <isRun>true</isRun>
-      <testCaseId>Test Cases/TC_controller</testCaseId>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>eb9223b6-ce28-4ea2-9c19-5775ba066400</variableId>
-      </variableLink>
-      <variableLink>
-         <testDataLinkId></testDataLinkId>
-         <type>DEFAULT</type>
-         <value></value>
-         <variableId>dd2fadd8-f293-4476-827b-afdb7cbdbe06</variableId>
-      </variableLink>
-   </testCaseLink>
 </TestSuiteEntity>
