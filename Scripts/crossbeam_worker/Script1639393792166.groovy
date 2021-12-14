@@ -25,9 +25,18 @@ rangeValue = rangeFrom + "-" + rangeTo         //    -> "1-99"
 rangeFrom = String.format("%05d", Integer.valueOf(rangeFrom))   //  1 -> "00001"
 rangeTo   = String.format("%05d", Integer.valueOf(rangeTo))     // 99 -> "00099"
 
-// IO
 Path projectDir = Paths.get(RunConfiguration.getProjectDir())
 Path outputDir = projectDir.resolve(outputDirRelativePath)
+Files.createDirectories(outputDir)
+
+
+/// copy *.groovy file
+Path sourceGroovy = projectDir.resolve("Test Suites").resolve("${testSuiteName}.groovy")
+Path targetGroovy = outputDir.resolve("${testSuiteName}_${rangeFrom}-${rangeTo}.groovy")
+Files.copy(sourceGroovy, targetGroovy)
+
+
+/// generate *.ts file by XSLT
 
 // prepare the transformer
 Path stylesheet = projectDir.resolve("Include/scripts/xslt/crossbeam.xsl")
