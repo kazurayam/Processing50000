@@ -10,6 +10,7 @@ import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 Path projectDir = Paths.get(RunConfiguration.getProjectDir())
 
 String outputDirRelativePath = "out/crossbeam"
+//String outputDirRelativePath = "Test Suites/crossbeam"
 
 Path outputDir = projectDir.resolve(outputDirRelativePath)
 if (Files.exists(outputDir)) {
@@ -31,6 +32,6 @@ for (int band = 1; band <= threads; band++) {
 			"testSuiteGuid": UUID.randomUUID().toString(), 
 			"rangeFrom": rangeFrom,
 			"rangeTo": rangeTo,
-			"outputDirRelativePath": "out/crossbeam"
+			"outputDirRelativePath": outputDirRelativePath
 		])
 }

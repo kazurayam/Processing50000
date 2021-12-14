@@ -8,6 +8,7 @@
 	<xsl:param name="testSuiteGuid"/>
 	<xsl:param name="rangeFrom"/>
 	<xsl:param name="rangeTo"/>
+	<xsl:param name="rangeValue"/>
 	
 	<xsl:template match="/">
 		<xsl:message>testSuiteName=<xsl:value-of select="$testSuiteName"
@@ -20,11 +21,14 @@
 		<xsl:if test="$testSuiteGuid = ''">
 			<xsl:message terminate="yes">testSuiteGuid is empty</xsl:message>
 		</xsl:if>
-		<xsl:if test="$rangeFrom = 0">
-			<xsl:message terminate="yes">rangeFrom is 0</xsl:message>
+		<xsl:if test="$rangeFrom = ''">
+			<xsl:message terminate="yes">rangeFrom is empty</xsl:message>
 		</xsl:if>
-		<xsl:if test="$rangeTo = 0">
-			<xsl:message terminate="yes">rangeTo is 0</xsl:message>
+		<xsl:if test="$rangeTo = ''">
+			<xsl:message terminate="yes">rangeTo is empty</xsl:message>
+		</xsl:if>
+		<xsl:if test="$rangeValue = ''">
+			<xsl:message terminate="yes">rangeValue is empty</xsl:message>
 		</xsl:if>
 		<xsl:apply-templates/>
 	</xsl:template>
@@ -38,7 +42,8 @@
 	<xsl:template match="name">
 		<xsl:copy><xsl:value-of select="$testSuiteName"
 		/>_<xsl:value-of select="$rangeFrom"
-		/>-<xsl:value-of select="$rangeTo"/></xsl:copy>
+		/>-<xsl:value-of select="$rangeTo"
+		/></xsl:copy>
 	</xsl:template>
 	
 	<xsl:template match="testSuiteGuid">
@@ -48,7 +53,7 @@
 	<xsl:template match="iterationEntity[iterationType='ALL']">
 		<xsl:copy>
 			<iterationType>RANGE</iterationType>
-			<value><xsl:value-of select="$rangeFrom"/>-<xsl:value-of select="$rangeTo"/></value>
+			<value><xsl:value-of select="$rangeValue"/></value>
 		</xsl:copy>
 	</xsl:template>
 	

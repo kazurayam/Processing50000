@@ -20,6 +20,11 @@ assert rangeFrom != 0
 assert rangeTo != 0
 assert outputDirRelativePath != null
 
+rangeValue = rangeFrom + "-" + rangeTo         //    -> "1-99"
+
+rangeFrom = String.format("%05d", Integer.valueOf(rangeFrom))   //  1 -> "00001"
+rangeTo   = String.format("%05d", Integer.valueOf(rangeTo))     // 99 -> "00099"
+
 // IO
 Path projectDir = Paths.get(RunConfiguration.getProjectDir())
 Path outputDir = projectDir.resolve(outputDirRelativePath)
@@ -31,14 +36,17 @@ Transformer transformer = createTransformer(tFactory, stylesheet,
 	[	"testSuiteName": testSuiteName,
 		"testSuiteGuid": testSuiteGuid,
 		"rangeFrom": rangeFrom,
-		"rangeTo": rangeTo])
+		"rangeTo": rangeTo,
+		"rangeValue": rangeValue
+		])
 
 // transform the document
 Path inputXml = projectDir.resolve("Test Suites/${testSuiteName}.ts")
 Path outputXml = outputDir.resolve(
-	"${testSuiteName}_${String.format("%05d", rangeFrom)}-${String.format("%05d", rangeTo)}.ts")
+	"${testSuiteName}_${rangeFrom}-${rangeTo}.ts")
 doTransform(transformer, inputXml, outputXml)
 assert Files.exists(outputXml)
+println "outputXml=${outputXml}"
 
 Transformer createTransformer(TransformerFactory tFactory, Path stylesheet, Map<String, String> parameters) {
 	Source xsltSource = getSourceOf(stylesheet)
